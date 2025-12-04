@@ -15,7 +15,7 @@ Unlike static directories, this platform uses **Geospatial queries** and **WebSo
 
 ## 🚀 Live Demo & Screenshots
 
-**[🔗 View Live Demo](#)** *(Link your deployed app here)*
+**[🔗 View Live Demo](https://waste-no-more.vercel.app/)**
 
 | Donor Dashboard | Volunteer Map |
 |:---:|:---:|
