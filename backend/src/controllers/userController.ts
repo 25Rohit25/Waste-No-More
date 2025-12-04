@@ -5,6 +5,19 @@ import Donation from '../models/Donation';
 import VolunteerTask from '../models/VolunteerTask';
 import DonationClaim from '../models/DonationClaim';
 
+// Get User Profile
+export const getProfile = async (req: any, res: Response) => {
+    try {
+        const user = await User.findById(req.user.id).select('-passwordHash');
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.json(user);
+    } catch (error: any) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 // Update Profile (Name, Phone, Email, Avatar)
 export const updateProfile = async (req: any, res: Response) => {
     const userId = req.user.id;

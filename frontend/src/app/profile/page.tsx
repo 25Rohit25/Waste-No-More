@@ -4,18 +4,50 @@ import { motion } from "framer-motion";
 import { User, Mail, MapPin, Calendar, Edit2, Camera, Save, Award, Heart, Leaf } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import api from "@/lib/api";
+import { useState, useEffect } from "react";
 
 export default function ProfilePage() {
     const [isEditing, setIsEditing] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [stats, setStats] = useState({ totalDonations: 0, itemsReceived: 0, tasksCompleted: 0 });
     const [user, setUser] = useState({
-        name: "Green Earth Cafe",
-        email: "contact@greenearth.com",
-        location: "New York, NY",
-        joined: "October 2023",
-        role: "Donor",
-        bio: "Dedicated to serving fresh, organic food and minimizing waste in our community."
+        name: "",
+        email: "",
+        location: "New York, NY", // Default for now as it's not in DB
+        joined: "",
+        role: "",
+        bio: "Dedicated to serving fresh, organic food and minimizing waste in our community." // Default
     });
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const [profileRes, statsRes] = await Promise.all([
+                    api.get('/users/profile'),
+                    api.get('/users/stats')
+                ]);
+
+                const profile = profileRes.data;
+                setUser(prev => ({
+                    ...prev,
+                    name: profile.name,
+                    email: profile.email,
+                    role: profile.role,
+                    joined: new Date(profile.createdAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
+                    location: profile.phone || "Location not set" // Using phone as proxy or placeholder
+                }));
+
+                setStats(statsRes.data);
+            } catch (error) {
+                console.error("Error fetching profile:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     const handleSave = () => {
         setIsEditing(false);
@@ -174,8 +206,16 @@ export default function ProfilePage() {
                                             <Heart className="w-6 h-6" />
                                         </div>
                                         <div>
-                                            <p className="text-3xl font-bold text-blue-600">45</p>
-                                            <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider">Donations Made</p>
+                                            <p className="text-3xl font-bold text-blue-600">
+                                                {user.role === 'DONOR' ? stats.totalDonations :
+                                                    user.role === 'RECEIVER' ? stats.itemsReceived :
+                                                        stats.tasksCompleted || 0}
+                                            </p>
+                                            <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider">
+                                                {user.role === 'DONOR' ? 'Donations Made' :
+                                                    user.role === 'RECEIVER' ? 'Items Received' :
+                                                        'Tasks Completed'}
+                                            </p>
                                         </div>
                                     </div>
 
