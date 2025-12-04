@@ -8,7 +8,7 @@ import { VideoModal } from "@/components/VideoModal";
 
 export default function Hero() {
     return (
-        <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <section className="relative pt-24 pb-12 lg:pt-48 lg:pb-32 overflow-hidden">
             {/* Animated Background Gradients */}
             <div className="absolute inset-0 -z-10 overflow-hidden">
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/20 blur-[120px] animate-pulse" />
