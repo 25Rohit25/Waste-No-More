@@ -161,7 +161,7 @@ Use these accounts to test the different roles without registering:
 ## 👤 Author
 
 **[Your Name]**
-- 💼 [LinkedIn](https://linkedin.com/in/yourprofile)
-- 🐙 [GitHub](https://github.com/yourusername)
-- 📧 [Email](mailto:youremail@example.com)
+- 💼 [LinkedIn](https://www.linkedin.com/in/rohit-singh-75428a311/)
+- 🐙 [GitHub](https://github.com/25Rohit25)
+- 📧 [Email](mailto:rohitsinghwork11@gmail.com)
 # Waste-No-More
