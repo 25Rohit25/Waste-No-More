@@ -22,7 +22,7 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="lg:w-1/2 space-y-8"
+                        className="w-full lg:w-1/2 space-y-6 md:space-y-8"
                     >
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
@@ -37,24 +37,26 @@ export default function Hero() {
                             Live in 50+ Cities
                         </motion.div>
 
-                        <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.1]">
+                        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.1]">
                             Food recovery <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600 animate-gradient-x">
                                 reimagined.
                             </span>
                         </h1>
 
-                        <p className="text-xl text-muted-foreground leading-relaxed max-w-xl">
+                        <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-xl">
                             The enterprise-grade platform connecting surplus food with communities in need. Automated, traceable, and impactful.
                         </p>
 
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <Link href="/register">
-                                <Button size="lg" className="h-14 px-8 text-lg rounded-full w-full sm:w-auto shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 hover:scale-105">
+                        <div className="flex flex-col sm:flex-row gap-4 w-full">
+                            <Link href="/register" className="w-full sm:w-auto">
+                                <Button size="lg" className="h-14 px-8 text-lg rounded-full w-full shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 hover:scale-105">
                                     Start Free Trial <ArrowRight className="ml-2 h-5 w-5" />
                                 </Button>
                             </Link>
-                            <VideoModal />
+                            <div className="w-full sm:w-auto flex">
+                                <VideoModal />
+                            </div>
                         </div>
 
                         <div className="pt-8 border-t border-border/50">
@@ -73,7 +75,7 @@ export default function Hero() {
                         initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
                         animate={{ opacity: 1, scale: 1, rotate: 0 }}
                         transition={{ duration: 0.8, delay: 0.2, ease: "backOut" }}
-                        className="lg:w-1/2 relative perspective-1000"
+                        className="w-full lg:w-1/2 relative perspective-1000 mt-8 lg:mt-0"
                     >
                         <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/20 bg-white/10 backdrop-blur-xl p-3 transform transition-transform hover:scale-[1.02] duration-500">
                             <div className="rounded-2xl overflow-hidden bg-background aspect-[4/3] relative group">
